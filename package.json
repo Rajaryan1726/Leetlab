@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express-validators": "^1.0.4",
+    "jsonwebtoken": "^9.0.3",
+    "mailgen": "^2.0.32",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.12"
+  }
+}

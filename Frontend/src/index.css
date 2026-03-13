@@ -1,0 +1,317 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+.animate-pulse {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.delay-100 {
+  animation-delay: 1s;
+}
+
+.delay-200 {
+  animation-delay: 2s;
+}
+
+.delay-300 {
+  animation-delay: 3s;
+}
+
+.delay-500 {
+  animation-delay: 5s;
+}
+
+.delay-700 {
+  animation-delay: 7s;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* ================= ACTIVITY HEATMAP STYLES ================= */
+
+/* Container */
+.react-calendar-heatmap {
+  width: 100%;
+}
+
+/* Month labels - modern typography */
+.react-calendar-heatmap .react-calendar-heatmap-month-label {
+  font-size: 0.75rem;
+  fill: #a1a1aa;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Weekday labels */
+.react-calendar-heatmap .react-calendar-heatmap-weekday-label {
+  font-size: 0.7rem;
+  fill: #71717a;
+  font-weight: 400;
+}
+
+/* Cell styling - professional spacing and borders */
+.react-calendar-heatmap rect {
+  rx: 2;
+  ry: 2;
+  stroke: #18181b;
+  stroke-width: 2;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+/* Smooth hover effect */
+.react-calendar-heatmap rect:hover {
+  stroke: #52525b;
+  stroke-width: 2;
+  opacity: 0.85;
+  transform: scale(1.12);
+  filter: brightness(1.1);
+}
+
+/* Premium heatmap – indigo → purple gradient palette */
+.color-empty {
+  fill: #27272a;
+  stroke: #3f3f46;
+  stroke-width: 0.5;
+  rx: 2;
+}
+
+.color-github-1 {
+  fill: #312e81;
+  rx: 2;
+}
+
+.color-github-2 {
+  fill: #4f46e5;
+  rx: 2;
+}
+
+.color-github-3 {
+  fill: #6366f1;
+  rx: 2;
+}
+
+.color-github-4 {
+  fill: #a78bfa;
+  rx: 2;
+}
+
+/* Fade-in animation - subtle and performant */
+@keyframes heatmapFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heatmap-container {
+  animation: heatmapFadeIn 0.5s ease-out;
+}
+
+/* ================= UPLOAD RESUME BUTTON SHIMMER ================= */
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.upload-btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.08) 50%,
+      transparent 100%);
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+
+.upload-btn-shimmer:hover::after {
+  animation: shimmer 1.2s ease-in-out infinite;
+}
+
+/* ================= EDIT PROFILE BUTTON GLOW ================= */
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes borderRotate {
+  0% {
+    --angle: 0deg;
+  }
+
+  100% {
+    --angle: 360deg;
+  }
+}
+
+.edit-btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.edit-btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--angle, 0deg), transparent 60%, rgba(168, 85, 247, 0.4) 80%, transparent 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.edit-btn-glow:hover::before {
+  opacity: 1;
+  animation: borderRotate 3s linear infinite;
+}
+
+/* ================= SOCIAL AUTH BUTTON (Premium) ================= */
+
+.social-auth-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #e4e4e7;
+  cursor: pointer;
+  overflow: hidden;
+  /* Layered bg: inner subtle gradient + dark base */
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
+    rgba(39, 39, 42, 0.7);
+  border: 1px solid rgba(113, 113, 122, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Shimmer sweep overlay */
+.social-auth-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.06) 45%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.06) 55%,
+      transparent 65%);
+  transform: translateX(-110%);
+  pointer-events: none;
+  transition: none;
+}
+
+/* Hover state */
+.social-auth-btn:hover {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, transparent 60%),
+    rgba(50, 50, 56, 0.85);
+  border-color: rgba(139, 139, 150, 0.5);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(99, 102, 241, 0.08);
+  transform: translateY(-1px);
+}
+
+.social-auth-btn:hover::after {
+  animation: socialShimmer 0.8s ease-out forwards;
+}
+
+/* Active / pressed */
+.social-auth-btn:active {
+  transform: translateY(0.5px) scale(0.99);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 1px 2px rgba(0, 0, 0, 0.5);
+  transition-duration: 0.1s;
+}
+
+/* Focus ring for accessibility */
+.social-auth-btn:focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.6);
+  outline-offset: 2px;
+}
+
+/* Icon container inside the button */
+.social-auth-btn .social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.375rem;
+  height: 1.375rem;
+  flex-shrink: 0;
+}
+
+@keyframes socialShimmer {
+  0% {
+    transform: translateX(-110%);
+  }
+
+  100% {
+    transform: translateX(110%);
+  }
+}
