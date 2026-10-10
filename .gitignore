@@ -5,3 +5,5 @@ dist/
 build/
 .DS_Store
 Backend/src/ml_servers/resume_model_final/
+   Backend/uploads/
+   __pycache__/
